@@ -3,16 +3,33 @@
   "version": "0.0.1",
   "description": "Grad-CAM implementation for tensorflowJS",
   "main": "index.ts",
-  "scripts": {
-    "build": "tsc -p ./tsconfig.json"
-  },
-  "keywords": [
+  "license": "MIT",
+  "homepage": "https://github.com/piximi/autotuner",
+"keywords": [
     "Grad-CAM",
     "tensorflow-JS"
   ],
-  "author": "Levin Moser",
-  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "runGradCAM": "tsc -p ./tsconfig.json && ts-node src\\runGradCAM.ts"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "autor": "Levin Moser",
   "dependencies": {
-    "@piximi/types": "^0.1.8"
+    "@piximi/types": "^0.1.8",
+    "@tensorflow/tfjs": "^1.2.11",
+    "babel-jest": "^24.8.0",
+    "canvas": "^2.5.0",
+    "jimp": "^0.8.4",
+    "node-gyp": "^6.0.0"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security",
+    "image-js": "^0.21.7",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
   }
 }
