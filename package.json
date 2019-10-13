@@ -5,7 +5,7 @@
   "main": "index.ts",
   "license": "MIT",
   "homepage": "https://github.com/piximi/autotuner",
-"keywords": [
+  "keywords": [
     "Grad-CAM",
     "tensorflow-JS"
   ],

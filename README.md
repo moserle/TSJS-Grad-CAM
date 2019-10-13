@@ -10,3 +10,6 @@ https://github.com/jacobgil/keras-grad-cam
 ### Tensorflow-js implementation of the CAM algorithm:
 https://github.com/tensorflow/tfjs-examples/tree/master/visualize-convnet
 
+## Run Grad-CAM
+The 'runGradCAM' file train a model on a pecified dataset and computes the grad-CAM for a given image.
+

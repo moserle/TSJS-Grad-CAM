@@ -4,7 +4,7 @@ import { applyColorMap } from './colorMap';
 import { tensorImageData } from './data/dataset';
 
 export async function gradClassActivationMap(
-  model: tensorflow.LayersModel,
+  model: tensorflow.Sequential,
   classLable: number,
   inputImage: Image
 ) {
@@ -49,18 +49,11 @@ export async function gradClassActivationMap(
     outputs: currentOutput
   });
 
-  // test sub model 3
-  // const subModel3 = tensorflow.model({
-  //   inputs: model.inputs,
-  //   outputs: currentOutput
-  // });
-
   // Generate the heatMap
   return tensorflow.tidy(() => {
     // run the sub-model 2 and extract the slice of the probability output that corresponds to the desired class
     // @ts-ignore
-    //const convOutput2ClassOutput = (input: any) => subModel2.apply(input, { training: true }).gather([classLable], 1);
-    const convOutput2ClassOutput = (input: any) => model.apply(input).gather([classLable], 1);
+    const convOutput2ClassOutput = (input: any) => subModel2.apply(input, { training: true }).gather([classLable], 1);
 
     // This is the gradient function of the output corresponding to the desired class with respect to its input (i.e., the output of the last convolutional layer of the original model)
     const gradFunction = tensorflow.grad(convOutput2ClassOutput);

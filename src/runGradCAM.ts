@@ -3,13 +3,10 @@ import * as tensorflow from '@tensorflow/tfjs';
 import { Classifier } from '@piximi/types';
 import { gradClassActivationMap } from './grad-CAM';
 import { writeImageTensorToFile } from './utils';
-import {MnistData} from './data/data';
-
-
+var path = require("path");
+var fs = require("fs");
 
 const runGradCAM = async () => {
-    var path = require("path");
-    var fs = require("fs");
     var testFilePath = path.resolve('src', 'data', 'smallMNISTTest.piximi');
     var stringContent = fs.readFileSync(testFilePath);
     var classifier = JSON.parse(stringContent) as Classifier;
@@ -37,7 +34,6 @@ const runGradCAM = async () => {
     await model.fit(trainingSet.data, trainingSet.lables, args);
 
     var testPred = model.predict([predictionSet.data[0]]);
-    //var testPred = model.apply([predictionSet.data[0]]);
 
     var gradCAM = await gradClassActivationMap(model, 1, classifier.images[0]);
 
